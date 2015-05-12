@@ -9,9 +9,22 @@
     <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
     <script src="./leaflet.ajax.min.js" type="text/javascript"></script>
     <script>
-      var map = L.map('map').setView([41.498292501398545, -72.8887939453125], 9);
-      var legend = L.control({position: "bottomright"});
-      var allTownsLayer;
+      var map = L.map('map').setView([41.498292501398545, -72.8887939453125], 9),
+        legend = L.control({position: "bottomright"}),
+        newHaven16,
+        bridgeport16,
+        danbury16,
+        hartford16,
+        stamford16,
+        waterbury16,
+        newHaven30,
+        bridgeport30,
+        danbury30,
+        hartford30,
+        stamford30,
+        waterbury30,
+        allTownsLayer,
+        overlays;
 
       function getColor(c) {
         return c >= 9500 ? "#99000d" :
@@ -57,8 +70,36 @@
         attribution: "<a href='http://www.mapbox.com/about/maps/' target='_blank'>Terms &amp; Feedback<\/a>"
       }).addTo(map);
 
-      allTownsLayer = L.geoJson.ajax("./all_ct.geojson",{style: style}).addTo(map);
+      allTownsLayer = L.geoJson.ajax("./all_ct.geojson",{style: style});
+      newHaven16    = L.geoJson.ajax("./new-haven-16.geojson",{style: style});
+      bridgeport16  = L.geoJson.ajax("./bridgeport-16.geojson",{style: style});
+      danbury16     = L.geoJson.ajax("./danbury-16.geojson",{style: style});
+      hartford16    = L.geoJson.ajax("./hartford-16.geojson",{style: style});
+      stamford16    = L.geoJson.ajax("./stamford-16.geojson",{style: style});
+      waterbury16   = L.geoJson.ajax("./waterbury-16.geojson",{style: style});
+      newHaven30    = L.geoJson.ajax("./new-haven-30.geojson",{style: style});
+      bridgeport30  = L.geoJson.ajax("./bridgeport-30.geojson",{style: style});
+      danbury30     = L.geoJson.ajax("./danbury-30.geojson",{style: style});
+      hartford30    = L.geoJson.ajax("./hartford-30.geojson",{style: style});
+      stamford30    = L.geoJson.ajax("./stamford-30.geojson",{style: style});
+      waterbury30   = L.geoJson.ajax("./waterbury-30.geojson",{style: style});
 
+      overlays = {
+        "All Towns": allTownsLayer,
+        "New Haven 16": newHaven16,
+        "Bridgeport 16": bridgeport16,
+        "Danbury 16": danbury16,
+        "Hartford 16": hartford16,
+        "Stamford 16": stamford16,
+        "Waterbury 16": waterbury16,
+        "New Haven 30": newHaven30,
+        "Bridgeport 30": bridgeport30,
+        "Danbury 30": danbury30,
+        "Hartford 30": hartford30,
+        "Stamford 30": stamford30
+      };
+
+      L.control.layers({}, overlays,{position: "topright", collapsed: false}).addTo(map);
       legend.addTo(map);
 
     </script>
