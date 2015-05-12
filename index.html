@@ -47,6 +47,16 @@
         };
       }
 
+      function radiusStyle(feature) {
+        return {
+          fillColor: getColor(feature.properties.hhi_with_systems),
+          weight: 3,
+          opacity: 1,
+          color: 'blue',
+          fillOpacity: 0.7
+        };
+      }
+
       legend.onAdd = function (map) {
         var div = L.DomUtil.create('div', 'info legend'),
           grades = [0,2500,3900, 5300, 6700, 8100, 9500],
@@ -71,18 +81,18 @@
       }).addTo(map);
 
       allTownsLayer = L.geoJson.ajax("./all_ct.geojson",{style: style});
-      newHaven16    = L.geoJson.ajax("./new-haven-16.geojson",{style: style});
-      bridgeport16  = L.geoJson.ajax("./bridgeport-16.geojson",{style: style});
-      danbury16     = L.geoJson.ajax("./danbury-16.geojson",{style: style});
-      hartford16    = L.geoJson.ajax("./hartford-16.geojson",{style: style});
-      stamford16    = L.geoJson.ajax("./stamford-16.geojson",{style: style});
-      waterbury16   = L.geoJson.ajax("./waterbury-16.geojson",{style: style});
-      newHaven30    = L.geoJson.ajax("./new-haven-30.geojson",{style: style});
-      bridgeport30  = L.geoJson.ajax("./bridgeport-30.geojson",{style: style});
-      danbury30     = L.geoJson.ajax("./danbury-30.geojson",{style: style});
-      hartford30    = L.geoJson.ajax("./hartford-30.geojson",{style: style});
-      stamford30    = L.geoJson.ajax("./stamford-30.geojson",{style: style});
-      waterbury30   = L.geoJson.ajax("./waterbury-30.geojson",{style: style});
+      newHaven16    = L.geoJson.ajax("./new-haven-16.geojson",{style: radiusStyle});
+      bridgeport16  = L.geoJson.ajax("./bridgeport-16.geojson",{style: radiusStyle});
+      danbury16     = L.geoJson.ajax("./danbury-16.geojson",{style: radiusStyle});
+      hartford16    = L.geoJson.ajax("./hartford-16.geojson",{style: radiusStyle});
+      stamford16    = L.geoJson.ajax("./stamford-16.geojson",{style: radiusStyle});
+      waterbury16   = L.geoJson.ajax("./waterbury-16.geojson",{style: radiusStyle});
+      newHaven30    = L.geoJson.ajax("./new-haven-30.geojson",{style: radiusStyle});
+      bridgeport30  = L.geoJson.ajax("./bridgeport-30.geojson",{style: radiusStyle});
+      danbury30     = L.geoJson.ajax("./danbury-30.geojson",{style: radiusStyle});
+      hartford30    = L.geoJson.ajax("./hartford-30.geojson",{style: radiusStyle});
+      stamford30    = L.geoJson.ajax("./stamford-30.geojson",{style: radiusStyle});
+      waterbury30   = L.geoJson.ajax("./waterbury-30.geojson",{style: radiusStyle});
 
       overlays = {
         "All Towns": allTownsLayer,
