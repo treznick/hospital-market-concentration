@@ -12,19 +12,19 @@
       var map = L.map('map').setView([41.498292501398545, -72.8887939453125], 9),
         legend = L.control({position: "bottomright"}),
         newHaven16,
-        bridgeport16,
-        danbury16,
-        hartford16,
-        stamford16,
-        waterbury16,
-        newHaven30,
-        bridgeport30,
-        danbury30,
-        hartford30,
-        stamford30,
-        waterbury30,
-        allTownsLayer,
-        overlays;
+      bridgeport16,
+      danbury16,
+      hartford16,
+      stamford16,
+      waterbury16,
+      newHaven30,
+      bridgeport30,
+      danbury30,
+      hartford30,
+      stamford30,
+      waterbury30,
+      allTownsLayer,
+      overlays;
 
       function getColor(c) {
         return c >= 9500 ? "#99000d" :
@@ -80,19 +80,92 @@
         attribution: "<a href='http://www.mapbox.com/about/maps/' target='_blank'>Terms &amp; Feedback<\/a>"
       }).addTo(map);
 
-      allTownsLayer = L.geoJson.ajax("./all_ct.geojson",{style: style});
-      newHaven16    = L.geoJson.ajax("./new-haven-16.geojson",{style: radiusStyle});
-      bridgeport16  = L.geoJson.ajax("./bridgeport-16.geojson",{style: radiusStyle});
-      danbury16     = L.geoJson.ajax("./danbury-16.geojson",{style: radiusStyle});
-      hartford16    = L.geoJson.ajax("./hartford-16.geojson",{style: radiusStyle});
-      stamford16    = L.geoJson.ajax("./stamford-16.geojson",{style: radiusStyle});
-      waterbury16   = L.geoJson.ajax("./waterbury-16.geojson",{style: radiusStyle});
-      newHaven30    = L.geoJson.ajax("./new-haven-30.geojson",{style: radiusStyle});
-      bridgeport30  = L.geoJson.ajax("./bridgeport-30.geojson",{style: radiusStyle});
-      danbury30     = L.geoJson.ajax("./danbury-30.geojson",{style: radiusStyle});
-      hartford30    = L.geoJson.ajax("./hartford-30.geojson",{style: radiusStyle});
-      stamford30    = L.geoJson.ajax("./stamford-30.geojson",{style: radiusStyle});
-      waterbury30   = L.geoJson.ajax("./waterbury-30.geojson",{style: radiusStyle});
+      allTownsLayer = L.geoJson.ajax("./all_ct.geojson",{ style: style });
+
+      newHaven16 = L.geoJson.ajax("./new-haven-16.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("New Haven 16");
+        }
+      });
+
+      bridgeport16 = L.geoJson.ajax("./bridgeport-16.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("Bridgeport 16");
+        }
+      });
+
+      danbury16 = L.geoJson.ajax("./danbury-16.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("Danbury 16");
+        }
+      });
+
+      hartford16 = L.geoJson.ajax("./hartford-16.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("Hartford 16");
+        }
+      });
+
+      stamford16 = L.geoJson.ajax("./stamford-16.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("Stamford 16");
+        }
+      });
+
+      waterbury16 = L.geoJson.ajax("./waterbury-16.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("Waterbury 16");
+        }
+      });
+
+      newHaven30 = L.geoJson.ajax("./new-haven-30.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("New Haven 30");
+        }
+      });
+
+      bridgeport30 = L.geoJson.ajax("./bridgeport-30.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("Bridgeport 30");
+        }
+      });
+
+      danbury30 = L.geoJson.ajax("./danbury-30.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("Danbury 30");
+        }
+      });
+
+      hartford30 = L.geoJson.ajax("./hartford-30.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("Hartford 30");
+        }
+      });
+
+      stamford30 = L.geoJson.ajax("./stamford-30.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("Stamford 30");
+        }
+      });
+
+      waterbury30 = L.geoJson.ajax("./waterbury-30.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("Waterbury 30");
+        }
+      });
+
 
       overlays = {
         "All Towns": allTownsLayer,
