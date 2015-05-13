@@ -19,6 +19,7 @@ var map = L.map('map').setView([41.498292501398545, -72.8887939453125], 9),
   norwalk16,
   norwalk30,
   allTownsLayer,
+  baseLayers,
   overlays;
 
 function getColor(c) {
@@ -203,9 +204,11 @@ norwalk30 = L.geoJson.ajax("./data/norwalk-30.geojson",{
   }
 });
 
+baseLayers = {
+  "All Towns"      : allTownsLayer
+};
 
 overlays = {
-  "All Towns"      : allTownsLayer,
   "New Haven 16"   : newHaven16,
   "Bridgeport 16"  : bridgeport16,
   "Danbury 16"     : danbury16,
@@ -226,5 +229,5 @@ overlays = {
   "Waterbury 30"   : waterbury30
 };
 
-L.control.layers({}, overlays,{position: "topright", collapsed: false}).addTo(map);
+L.control.layers(baseLayers, overlays,{position: "topright", collapsed: false}).addTo(map);
 legend.addTo(map);
