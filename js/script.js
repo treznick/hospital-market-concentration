@@ -126,7 +126,7 @@ newHaven30 = L.geoJson.ajax("./data/new-haven-30.geojson",{
   }
 });
 
-bridgeport30 = L.geoJson.ajax("./bdata/ridgeport-30.geojson",{
+bridgeport30 = L.geoJson.ajax("./data/bridgeport-30.geojson",{
   style: radiusStyle,
   onEachFeature: function (feature, layer) {
     layer.bindPopup("Bridgeport 30");
@@ -140,7 +140,7 @@ danbury30 = L.geoJson.ajax("./data/danbury-30.geojson",{
   }
 });
 
-hartford30 = L.geoJson.ajax("./data/data/hartford-30.geojson",{
+hartford30 = L.geoJson.ajax("./data//hartford-30.geojson",{
   style: radiusStyle,
   onEachFeature: function (feature, layer) {
     layer.bindPopup("Hartford 30");
