@@ -12,19 +12,25 @@
       var map = L.map('map').setView([41.498292501398545, -72.8887939453125], 9),
         legend = L.control({position: "bottomright"}),
         newHaven16,
-      bridgeport16,
-      danbury16,
-      hartford16,
-      stamford16,
-      waterbury16,
-      newHaven30,
-      bridgeport30,
-      danbury30,
-      hartford30,
-      stamford30,
-      waterbury30,
-      allTownsLayer,
-      overlays;
+        bridgeport16,
+        danbury16,
+        hartford16,
+        stamford16,
+        waterbury16,
+        newHaven30,
+        bridgeport30,
+        danbury30,
+        hartford30,
+        stamford30,
+        waterbury30,
+        newBritain16,
+        newBritain30,
+        newLondon16,
+        newLondon30,
+        norwalk16,
+        norwalk30,
+        allTownsLayer,
+        overlays;
 
       function getColor(c) {
         return c >= 9500 ? "#99000d" :
@@ -166,21 +172,69 @@
         }
       });
 
+      newBritain16 = L.geoJson.ajax("./new-britain-16.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("New Britain 16");
+        }
+      });
+
+      newBritain30 = L.geoJson.ajax("./new-britain-30.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("New Britain 30");
+        }
+      });
+
+      newLondon16 = L.geoJson.ajax("./new-london-16.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("New London 16");
+        }
+      });
+
+      newLondon30 = L.geoJson.ajax("./new-london-30.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("New London 30");
+        }
+      });
+
+      norwalk16 = L.geoJson.ajax("./norwalk-16.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("Norwalk 16");
+        }
+      });
+
+      norwalk30 = L.geoJson.ajax("./norwalk-30.geojson",{
+        style: radiusStyle,
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup("Norwalk 30");
+        }
+      });
+
 
       overlays = {
-        "All Towns": allTownsLayer,
-        "New Haven 16": newHaven16,
-        "Bridgeport 16": bridgeport16,
-        "Danbury 16": danbury16,
-        "Hartford 16": hartford16,
-        "Stamford 16": stamford16,
-        "Waterbury 16": waterbury16,
-        "New Haven 30": newHaven30,
-        "Bridgeport 30": bridgeport30,
-        "Danbury 30": danbury30,
-        "Hartford 30": hartford30,
-        "Stamford 30": stamford30,
-        "Waterbury 30": waterbury30
+        "All Towns"      : allTownsLayer,
+        "New Haven 16"   : newHaven16,
+        "Bridgeport 16"  : bridgeport16,
+        "Danbury 16"     : danbury16,
+        "Hartford 16"    : hartford16,
+        "Stamford 16"    : stamford16,
+        "Waterbury 16"   : waterbury16,
+        "New Haven 30"   : newHaven30,
+        "Bridgeport 30"  : bridgeport30,
+        "Danbury 30"     : danbury30,
+        "Hartford 30"    : hartford30,
+        "Stamford 30"    : stamford30,
+        "Waterbury 30"   : waterbury30,
+        "New Britain 16" : newBritain16,
+        "New Britain 30" : newBritain30,
+        "New London 16"  : newLondon16,
+        "New London 30"  : newLondon30,
+        "Norwalk 16"     : norwalk16,
+        "Norwalk 30"     : norwalk30
       };
 
       L.control.layers({}, overlays,{position: "topright", collapsed: false}).addTo(map);
