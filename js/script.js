@@ -18,8 +18,6 @@ var map = L.map('map').setView([41.498292501398545, -72.8887939453125], 9),
   newLondon30,
   norwalk16,
   norwalk30,
-  allTownsLayer,
-  baseLayers,
   overlays;
 
 function getColor(c) {
@@ -76,7 +74,7 @@ L.tileLayer('http://{s}.tiles.mapbox.com/v4/treznick.6b141342/{z}/{x}/{y}.png?ac
   attribution: "<a href='http://www.mapbox.com/about/maps/' target='_blank'>Terms &amp; Feedback<\/a>"
 }).addTo(map);
 
-allTownsLayer = L.geoJson.ajax("./data/all_ct.geojson",{ style: style });
+L.geoJson.ajax("./data/all_ct.geojson",{ style: style }).addTo(map);
 
 newHaven16 = L.geoJson.ajax("./data/new-haven-16.geojson",{
   style: radiusStyle,
@@ -204,9 +202,6 @@ norwalk30 = L.geoJson.ajax("./data/norwalk-30.geojson",{
   }
 });
 
-baseLayers = {
-  "All Towns"      : allTownsLayer
-};
 
 overlays = {
   "New Haven 16"   : newHaven16,
@@ -229,5 +224,5 @@ overlays = {
   "Waterbury 30"   : waterbury30
 };
 
-L.control.layers(baseLayers, overlays,{position: "topright", collapsed: false}).addTo(map);
+L.control.layers({}, overlays,{position: "topright", collapsed: false}).addTo(map);
 legend.addTo(map);
